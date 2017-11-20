@@ -52,7 +52,7 @@ PlacesDataSource.prototype.getStores = function(bounds, features, callback) {
       var latLng = result.geometry.location;
       var store = new storeLocator.Store(result.id, latLng, null, {	
         title: result.name,
-        address: "Address: " + result.vicinity + "<BR/>Rating: " + result.rating,
+        address: "<B>Address: </B>" + result.vicinity + "<BR/><B>Rating: </B>" + result.rating,
         //icon: result.icon
       });
       stores.push(store);
