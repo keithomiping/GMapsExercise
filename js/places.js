@@ -46,27 +46,16 @@ PlacesDataSource.prototype.getStores = function(bounds, features, callback) {
   }, function(results, status) {
 	  
 	// since food type in Google Maps API is already deprecated
-	var food1 = ["Spicy Sliced Fish","Spinach Kebab","Tofu Falli","Aloo Chutney Wala","Pork Sausage & Lychee Salad",
-					"Momotaro Tartare", "Colony Pizza","Whole Roasted Chicken","Hot Chicken", "Curry Sampler"];
-	var food2 = ["Kaldereta","Chicken Adobo","Pancit","Kare-kare","Bicol Express","Puchero","Ginisang monggo",
-					"Crispy pata","Mechado","Embutido"];
-	var counter = 0;
 	var stores = [];
 
-	
-    for (var i = 0, result; result = results[i]; i++) {
+	for (var i = 0, result; result = results[i]; i++) {
       var latLng = result.geometry.location;
       var store = new storeLocator.Store(result.id, latLng, null, {	
         title: result.name,
-        address: result.vicinity,
-		misc: food1[counter] + ", " + food2[counter]
+        address: "Address: " + result.vicinity + "<BR/>Rating: " + result.rating,
         //icon: result.icon
       });
       stores.push(store);
-	  if ((i+1) == food1.length){
-		counter = 0;
-	  }
-	  counter++;
     }
 
     callback(stores);
